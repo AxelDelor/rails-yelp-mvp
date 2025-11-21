@@ -1,0 +1,19 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to "Restaurants", restaurants_path, class: "navbar-brand"  %>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    </div>
+  </div>
+</nav>
+
+<div class="container-main">
+  <div class="card p-2 mt-4" style="width: 24rem;">
+    <%= simple_form_for @restaurant do |f| %>
+      <%= f.input :name %>
+      <%= f.input :category %>
+      <%= f.input :address %>
+      <%= f.input :phone_number %>
+      <%= f.submit "Add this restaurant", class:"btn btn-warning" %>
+    <% end %>
+  </div>
+</div>

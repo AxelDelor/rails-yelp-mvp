@@ -1,0 +1,46 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to "Restaurants" , restaurants_path, class: "navbar-brand" %>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      </div>
+  </div>
+</nav>
+<div class="container-main gap-4">
+
+  <div class="card p-2 mt-4" style="width: 32rem;">
+    <img
+      src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= @restaurant.name %>
+          </h5>
+          <p class="card-text"><strong>Category:</strong>
+            <%= @restaurant.category %>
+          </p>
+          <p class="card-text"><strong>Address:</strong>
+            <%= @restaurant.address %>
+          </p>
+          <p class="card-text"><strong>Phone:</strong>
+            <%= @restaurant.phone_number %>
+          </p>
+          <%= simple_form_for [@restaurant, @review] do |f| %>
+            <%= f.input :content, label: "Your review" %>
+            <%= f.input :rating %>
+            <%= f.submit "Submit review", class: "btn btn-warning" %>
+          <% end %>
+    </div>
+  </div>
+
+  <div class="p-2 mt-4" style="width: 32rem">
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%= review.content %>
+            <div><strong><%= review.rating %>/5</strong><i class="fa-solid fa-star text-warning"></i><div></li>
+        <% end %>
+    </ul>
+  </div>
+
+
+</div>
